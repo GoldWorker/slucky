@@ -74,5 +74,6 @@ function getEntryConfig() {
         const filePath = item.replace('./src', '');
         entryObj[filePath] = path.resolve(__dirname, item);
     });
+    console.log(entryObj);
     return entryObj;
 }
