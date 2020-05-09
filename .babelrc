@@ -2,11 +2,18 @@
     "env": {
         "test": {
             "presets": [
-                ["@babel/preset-env"],
-                "@babel/preset-react"
+                [
+                    "@babel/preset-env",
+                    {
+                        "modules": "auto"
+                    }
+                ],
+                "@babel/preset-react",
+                "@babel/preset-typescript",
+                // "jest"
             ],
             "plugins": [
-                "transform-es2015-modules-commonjs"
+                "@babel/plugin-transform-runtime"
             ]
         }
     },
