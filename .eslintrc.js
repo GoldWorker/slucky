@@ -6,14 +6,14 @@ module.exports = {
         'plugin:jsx-control-statements/recommended',
         'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
         'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
-        'prettier/react'
+        'prettier/react',
     ],
     "settings": {
         "react": {
             "version": "detect",
         }
     },
-    plugins: ['@typescript-eslint', 'react', 'jsx-control-statements', 'prettier'],
+    plugins: ['@typescript-eslint', 'react', 'jsx-control-statements', 'prettier', 'react-hooks'],
     env: {
         browser: true,
         node: true,
@@ -26,6 +26,8 @@ module.exports = {
         $: true
     },
     rules: {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         'prettier/prettier': 0,
         'no-console': ['warn', {
             allow: ['warn', 'error']

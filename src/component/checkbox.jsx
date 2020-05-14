@@ -25,16 +25,16 @@ export default class Checkbox extends Component {
                         defaultChecked={this.props.defaultChecked || false}
                         onChange={(e) => this.handleChange(e)}
                     /> : <input
-                            id={this.id}
-                            trigger='core'
-                            type="checkbox"
-                            disabled={this.props.disabled}
-                            className=""
-                            name={this.props.name}
-                            value={this.props.value}
-                            checked={this.props.checked || false}
-                            onChange={(e) => this.handleChange(e)}
-                        />
+                        id={this.id}
+                        trigger='core'
+                        type="checkbox"
+                        disabled={this.props.disabled}
+                        className=""
+                        name={this.props.name}
+                        value={this.props.value}
+                        checked={this.props.checked || false}
+                        onChange={(e) => this.handleChange(e)}
+                    />
                 }
                 <span className="checkbox-hook ta-c">
                     <span className="checkbox-hook-in fs12 op0">✓</span>
@@ -69,16 +69,16 @@ export class CheckboxFontIn extends Component {
                         defaultChecked={this.props.defaultChecked || false}
                         onChange={(e) => this.handleChange(e)}
                     /> : <input
-                            id={this.id}
-                            trigger='core'
-                            type="checkbox"
-                            disabled={this.props.disabled}
-                            className="d-n"
-                            name={this.props.name}
-                            value={this.props.value}
-                            checked={this.props.checked || false}
-                            onChange={(e) => this.handleChange(e)}
-                        />
+                        id={this.id}
+                        trigger='core'
+                        type="checkbox"
+                        disabled={this.props.disabled}
+                        className="d-n"
+                        name={this.props.name}
+                        value={this.props.value}
+                        checked={this.props.checked || false}
+                        onChange={(e) => this.handleChange(e)}
+                    />
                 }
                 <label
                     htmlFor={this.id}
@@ -115,16 +115,16 @@ export class CheckboxBorder extends Component {
                         defaultChecked={this.props.defaultChecked || false}
                         onChange={(e) => this.handleChange(e)}
                     /> : <input
-                            id={this.id}
-                            trigger='core'
-                            type="checkbox"
-                            disabled={this.props.disabled}
-                            className="d-n"
-                            name={this.props.name}
-                            value={this.props.value}
-                            checked={this.props.checked || false}
-                            onChange={(e) => this.handleChange(e)}
-                        />
+                        id={this.id}
+                        trigger='core'
+                        type="checkbox"
+                        disabled={this.props.disabled}
+                        className="d-n"
+                        name={this.props.name}
+                        value={this.props.value}
+                        checked={this.props.checked || false}
+                        onChange={(e) => this.handleChange(e)}
+                    />
                 }
                 <label
                     htmlFor={this.id}

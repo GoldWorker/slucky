@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 
-export default class Text extends Component {
+interface IProps {
+    value: any
+}
+
+interface ThousandsProps {
+    value: number
+}
+
+export default class Text extends Component<IProps> {
+    static Thousands: any
+
     render() {
         return (
             <div>
-
+                {this.props.value}
             </div>
         );
     }
 }
 
-class Money extends Component {
-    toThousands = (number) => {
-        if (isNaN(number)) { return 0; }
+class Thousands extends Component<ThousandsProps>{
+    toThousands = (number: number): string => {
+        if (Object.prototype.toString.call(number) !== '[object Number]') { return '0'; }
 
-        let num = (number || 0).toString();
+        let num = number.toString();
         let result = '';
         let decimals = '';
         if (num.split('.')[1]) {
@@ -27,7 +37,7 @@ class Money extends Component {
             num = num.slice(0, num.length - 3);
         }
 
-        if (num) { result = num + result; }
+        result = num + result;
 
         if (decimals) {
             return result + '.' + decimals;
@@ -37,10 +47,10 @@ class Money extends Component {
     render() {
         return (
             <div className="d-il test2thousands">
-                {this.toThousands(this.props.value || '')}
+                {this.toThousands(this.props.value)}
             </div>
         );
     }
 }
 
-Text.Money = Money;
+Text.Thousands = Thousands;
