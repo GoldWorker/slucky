@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactChildren } from 'react';
+import React, { ChangeEvent } from 'react';
 
 declare module 'react' {
     interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -150,7 +150,7 @@ interface GroupProps {
         disabled: boolean,
     }>,
     className: string,
-    children: ReactChildren,
+    children: JSX.Element,
     onChange: (values: Array<string | number>) => void
 }
 

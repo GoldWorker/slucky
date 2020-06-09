@@ -49,6 +49,9 @@ $checkbox_default_c: inherit !default;
 $checkbox_focus_bg: $theme_color !default;
 $checkbox_focus_c: inherit !default;
 $select_hover_color:$text_b !default;
+$select_down_color:$hint_b !default;
+$select_option_bg:#fff !default;
+$select_highligh:$theme_color !default;
 
 // btn
 $hoverWaveColor: $theme_color !default;

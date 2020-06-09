@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactChildren } from 'react';
+import React, { ChangeEvent } from 'react';
 
 interface RadioProps {
     checked: boolean,
@@ -27,13 +27,13 @@ export default function Radio(props: RadioProps): JSX.Element {
                     onChange={onChange}
                     type="radio"
                     className="d-n" /> : <input
-                        id={id}
-                        name={props.name}
-                        value={props.value}
-                        checked={props.checked}
-                        onChange={onChange}
-                        type="radio"
-                        className="d-n" />
+                    id={id}
+                    name={props.name}
+                    value={props.value}
+                    checked={props.checked}
+                    onChange={onChange}
+                    type="radio"
+                    className="d-n" />
             }
             <label className="m0" htmlFor={id}>
                 <div className="radio-out">
@@ -64,14 +64,14 @@ export function RadioBorder(props: RadioProps): JSX.Element {
                     onChange={onChange}
                     type="radio"
                     className="d-n" /> : <input
-                        trigger="core"
-                        id={id}
-                        name={props.name}
-                        value={props.value}
-                        checked={props.checked}
-                        onChange={onChange}
-                        type="radio"
-                        className="d-n" />
+                    trigger="core"
+                    id={id}
+                    name={props.name}
+                    value={props.value}
+                    checked={props.checked}
+                    onChange={onChange}
+                    type="radio"
+                    className="d-n" />
             }
             <label
                 htmlFor={id}
@@ -88,7 +88,7 @@ interface GroupProps {
     defaultValue: string | number,
     value: string | number,
     className: string,
-    children: ReactChildren,
+    children: JSX.Element,
     option: Array<{
         label: string,
         value: string | number
