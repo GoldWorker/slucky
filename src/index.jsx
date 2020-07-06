@@ -21,6 +21,7 @@ import Transfer from './component/transfer';
 import Text from './component/text';
 import Details from './component/details';
 import Lrchange from './component/lrChange';
+import Guide from './component/guide';
 import Validator from './component/validator';
 import Lib from './component/lib';
 
@@ -49,5 +50,6 @@ export {
     Text,
     Details,
     Lrchange,
+    Guide,
     Lib
 };

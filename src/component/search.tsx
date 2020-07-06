@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent, useEffect, useRef, createRef } from 'react';
 
 interface SearchProps {
     labelName: string,
@@ -6,6 +6,8 @@ interface SearchProps {
     placeholder: string,
     maxLength: number,
     maxHeight: number,
+    // 是否开启前端搜索匹配
+    isOpenSearchMatch?: boolean,
     loading: boolean | JSX.Element,
     // 配置提示列表
     option: string[],
@@ -16,24 +18,38 @@ interface SearchProps {
     // 输入字符、按下回车时回调
     onChange: (value: string) => void,
     // 点击option中的item
-    onClick: (value: string) => void
+    onClick: (value: string) => void,
+    // 滚动条到底时触发
+    onScrollButtom: () => void
 }
 
 export default function Search(props: SearchProps): JSX.Element {
     const id = Math.random().toString(36).substring(2);
+    let inputRef: any;
 
     const [dataCache, setDataCache] = useState<string[]>(props.option || []);
     const [value, setValue] = useState(props.value || '');
 
     useEffect(() => {
-        const dataFilter = props.option.filter(item => {
+        console.log(inputRef);
+    }, []);
+
+    useEffect(() => {
+        const dataFilter = props.isOpenSearchMatch ? props.option.filter(item => {
             return item.indexOf(value) !== -1;
-        });
+        }) : props.option;
         setDataCache(dataFilter);
     }, [props.option]);
 
+    useEffect(() => {
+        setValue(props.value || '');
+        // props.onChange && props.onChange(props.value);
+    }, [props.value]);
+
     const handleChange = (value: string): void => {
-        setValue(value);
+        if (!props.value) {
+            setValue(value);
+        }
         props.onChange && props.onChange(value);
     };
 
@@ -45,6 +61,7 @@ export default function Search(props: SearchProps): JSX.Element {
     const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>): void => {
         // 回车
         if (e.nativeEvent.keyCode === 13) {
+            inputRef.blur && inputRef.blur();
             props.onSearch && props.onSearch(e.currentTarget.value);
         }
     };
@@ -58,6 +75,36 @@ export default function Search(props: SearchProps): JSX.Element {
         const preStr = item.substring(0, index);
         const nextStr = item.substring(index + value.length);
         return <span>{preStr}<span className="highlight">{keyWord}</span>{nextStr}</span>;
+    };
+
+    const debounce = (fun: any, time = 500): any => {
+        let timer: ReturnType<typeof setTimeout>;
+        return function (...args: any): void {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                fun && fun.apply(null, [...args]);
+            }, time);
+        };
+    };
+
+    const debounceScroll = debounce(props.onScrollButtom);
+
+    const handleScroll = (e: React.UIEvent<HTMLElement>): void => {
+        e.stopPropagation();
+        // console.log({
+        //     event: e,
+        //     target: e.target, // Note 1* scrollTop is undefined on e.target
+        //     currentTarget: e.currentTarget,
+        //     scrollTop: e.currentTarget.scrollTop,
+        //     scrollHeight: e.currentTarget.scrollHeight,
+        //     clientHeight: e.currentTarget.clientHeight
+        // });
+        const { currentTarget } = e;
+        const { scrollTop, clientHeight, scrollHeight } = currentTarget;
+        const difference = scrollHeight - clientHeight - scrollTop;
+        if (difference < 20) {
+            props.onScrollButtom && debounceScroll();
+        }
     };
 
     return (
@@ -74,18 +121,26 @@ export default function Search(props: SearchProps): JSX.Element {
                     maxLength={props.maxLength || 50}
                     onChange={(e: ChangeEvent<HTMLInputElement>): void => handleChange(e.target.value)}
                     onKeyPress={handleEnterKey}
-                    value={value} />
+                    value={value}
+                    ref={element => inputRef = element}
+                />
                 <img className="icon logo-search mr8 s0" src={require('../icons/search.svg')} alt="" onClick={(): void => props.onSearch && props.onSearch(value)} />
             </div>
+
             {
                 // 输入提示
-                dataCache.length ? <ul className="select-option" style={{ 'maxHeight': `${props.maxHeight}px` }} loader-inline={props.loading ? 'circle' : ''} scrollbar='normal'>
+                dataCache.length ? <ul className="select-option shadow" onScroll={handleScroll} style={{ 'maxHeight': `${props.maxHeight}px` }} scrollbar='normal'>
+                    {
+                        props.loading ? <div className="p-s z9 ta-r" style={{ right: `${0}px`, top: `${0}px` }}>
+                            <div className="d-il p-a" style={{ right: `${8}px`, top: `${0}px` }} data-loader='circle'></div>
+                        </div> : null
+                    }
                     {
                         dataCache.map((item, index) => {
                             return <li className="ellip1" onMouseDown={(): void => handleClick(item)} key={index}>{highlightKeyWord(item)}</li>;
                         })
                     }
-                </ul> : <ul className="select-option">
+                </ul> : <ul className="select-option shadow">
                     <div className="ptb32 ta-c">
                         暂无数据
                     </div>

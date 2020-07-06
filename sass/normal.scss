@@ -31,7 +31,8 @@ $shadow_color: 0 2px 2px 0 rgba(0, 0, 0, 0.05),
 0 1px 4px 0 rgba(0, 0, 0, 0.08),
 0 3px 1px -2px rgba(0, 0, 0, 0.2) !default;
 //paper
-$paper_color: #fff !default;
+$paper_bg: #fff !default;
+$paper_color: $text_b !default;
 
 // Gobal
 $w_space: -5px !default;
@@ -52,6 +53,7 @@ $select_hover_color:$text_b !default;
 $select_down_color:$hint_b !default;
 $select_option_bg:#fff !default;
 $select_highligh:$theme_color !default;
+$select_option_hover_bg:#F6F8F9 !default;
 
 // btn
 $hoverWaveColor: $theme_color !default;
@@ -65,7 +67,16 @@ $table_header_bg: #fff !default;
 $table_header_c: #787E85 !default;
 $table_header_fs: 14px !default;
 $table_hover: #E8EBED !default;
+$table_title_padding:24px !default;
+$table_item_padding:12px !default;
+$table_list_border_color:transparent !default;
 
+$paging_c:$text_b !default;
+$paging_b:$divider_b !default;
+$paging_bg:transparent !default;
+$paging_hover_bg:$table_odd_bg !default;
+$paging_hover_b:$paging_hover_bg !default;
+$paging_hover_c:$paging_c !default;
 // steps
 $steps_bar_bg:$table_odd_bg !default;
 
@@ -102,7 +113,8 @@ $tab_active_color:$theme_color !default;
 }
 
 @mixin paper($radius) {
-    background: $paper_color;
+    background: $paper_bg;
+    color: $paper_color;
     border-radius: $radius;
 }
 
@@ -136,6 +148,7 @@ $tab_active_color:$theme_color !default;
 
     &:disabled {
         cursor: not-allowed;
+        color: #fff !important;
         background-color: $disable !important;
     }
 
@@ -209,6 +222,7 @@ $tab_active_color:$theme_color !default;
 @import './table.scss';
 @import './paging.scss';
 @import './step.scss';
+@import './guide.scss';
 
 // ----------------------------------基础布局样式----------------------------------------
 $space: 2;
@@ -302,8 +316,16 @@ $space: 2;
     position: relative;
 }
 
+.p-f {
+    position: fixed;
+}
+
 .p-a {
     position: absolute;
+}
+
+.p-s {
+    position: sticky;
 }
 
 .l0 {
@@ -355,6 +377,14 @@ $space: 2;
 // 宽度系列
 .w-full {
     width: 100%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
 }
 
 .w288 {
@@ -778,6 +808,10 @@ $space: 2;
 
 .cp {
     cursor: pointer;
+}
+
+.animate03 {
+    @include animate()
 }
 
 // ---------------------------------常用模块----------------------------

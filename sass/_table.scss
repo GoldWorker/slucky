@@ -28,6 +28,9 @@
 }
 
 .table-title {
+    padding-top: $table_title_padding;
+    padding-bottom: $table_title_padding;
+    border-bottom: 1px $table_list_border_color solid;
     transition: all .3s;
 }
 
@@ -38,6 +41,12 @@
 .table-list {
     transition: all .3s;
     border-left: 2px transparent solid;
+    border-bottom: 1px $table_list_border_color solid;
+
+    >.table-item {
+        padding-top: $table_item_padding;
+        padding-bottom: $table_item_padding;
+    }
 }
 
 .table-list:nth-child(odd) {

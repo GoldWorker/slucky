@@ -84,7 +84,7 @@ export default class Table extends Component {
                                 this.props.dataconf.map((conf, i) => {
                                     // 全选选项
                                     if (conf.checkbox) {
-                                        return <div key={i} className={['ptb24 d-il ta-l table-title s0', i == 0 ? 'pl20' : ''].join(' ')} style={{ 'width': conf.width }}></div>;
+                                        return <div key={i} className={['d-il ta-l table-title s0', i == 0 ? 'pl20' : ''].join(' ')} style={{ 'width': conf.width }}></div>;
                                         // return (
                                         //     <div key={i} className="ptb16 plr6 d-il ta-c table-title s0" style={{ 'width': conf.width }}>
                                         //         <div className="checkbox-box-normalize">
@@ -99,7 +99,7 @@ export default class Table extends Component {
                                         // );
                                     }
                                     return (
-                                        !conf.checkbox && conf.title ? <div className={['ptb24 d-il table-title s0', i == 0 ? 'pl20' : '', this.props.textAlign ? this.props.textAlign : 'ta-l'].join(' ')} style={{ 'width': conf.width }} key={i}>{conf.title}</div> : null
+                                        !conf.checkbox && conf.title ? <div className={['d-il table-title s0', i == 0 ? 'pl20' : '', this.props.textAlign ? this.props.textAlign : 'ta-l'].join(' ')} style={{ 'width': conf.width }} key={i}>{conf.title}</div> : null
                                     );
                                 })
                             }
@@ -131,7 +131,7 @@ export default class Table extends Component {
                                             {
                                                 this.props.dataconf.map((conf, k) => {
                                                     return (
-                                                        <div className={['d-il ptb12 p-r s0 fw-w', k == 0 ? 'pl20' : '', this.props.textAlign ? this.props.textAlign : 'ta-l'].join(' ')} style="cursor:pointer" style={{ 'width': conf.width }} key={k}>
+                                                        <div className={['d-il table-item p-r s0 fw-w', k == 0 ? 'pl20' : '', this.props.textAlign ? this.props.textAlign : 'ta-l'].join(' ')} style="cursor:pointer" style={{ 'width': conf.width }} key={k}>
                                                             {/* Base */}
 
                                                             {
@@ -152,7 +152,7 @@ export default class Table extends Component {
                                                             {/* Textarea */}
                                                             {
                                                                 conf.textarea ?
-                                                                    <textarea rows="4" className="textarea w-full" value={data[conf.name]} readonly></textarea>
+                                                                    <textarea rows="4" className="textarea w-full" value={data[conf.name]} readOnly></textarea>
                                                                     : null
                                                             }
                                                             {/* Progress */}
@@ -256,7 +256,7 @@ Table.handleCheckbox = (self_this, data, i, conf) => {
 
 Table.handelPopup = (handleItem) => {
     return (
-        <div class="pop-box">
+        <div className="pop-box">
             {/* <div className="pop-toggle ptb4 mlr4">
                 <div className="pop-main pr8">
                     <div className="pop-content">

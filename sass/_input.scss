@@ -1122,25 +1122,24 @@
         overflow-y: scroll;
         overflow-x: hidden;
         background-color: $select_option_bg;
-        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.50);
         transition: all .3s;
         z-index: 19;
         color: $select_down_color;
 
-        .highlight{
+        .highlight {
             color: $select_highligh
         }
 
         &>li {
             padding: 8px 32px 8px 8px;
-            
+
             list-style: none;
             cursor: pointer;
         }
 
         &>li:hover {
             color: $text_b;
-            background-color: $table_odd_bg;
+            background-color: $select_option_hover_bg;
         }
     }
 }

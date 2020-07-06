@@ -33,9 +33,11 @@
 }
 
 .paging-aurora {
+    color: $paging_c;
     .paging-viewbox {
-        border: 1px solid $divider_b;
+        border: 1px solid $paging_b;
         border-radius: 2px;
+        background-color: $paging_bg;
     }
 
     .btn-paging {
@@ -46,23 +48,22 @@
         line-height: 30px;
         text-align: center;
         transition: background-color .3s;
-        color: $readOnly_c;
         font-size: 12px;
         user-select: none;
         cursor: pointer;
 
         &:hover {
-            background-color: $table_odd_bg;
+            background-color: $paging_hover_bg;
         }
     }
 
     .btn-active {
         // background-color: $theme_color !important;
         // color: #fff;
-        border-left: 1px solid #D3D9DB;
-        border-right: 1px solid #D3D9DB;
-        background: #F6F8F9;
-        color: #17212C;
+        border-left: 1px solid $paging_hover_b;
+        border-right: 1px solid $paging_hover_b;
+        background: $paging_hover_bg;
+        color: $paging_hover_c;
     }
 
     .arrow-left:before {
