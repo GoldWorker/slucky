@@ -31,10 +31,6 @@ export default function Search(props: SearchProps): JSX.Element {
     const [value, setValue] = useState(props.value || '');
 
     useEffect(() => {
-        console.log(inputRef);
-    }, []);
-
-    useEffect(() => {
         const dataFilter = props.isOpenSearchMatch ? props.option.filter(item => {
             return item.indexOf(value) !== -1;
         }) : props.option;
@@ -47,9 +43,7 @@ export default function Search(props: SearchProps): JSX.Element {
     }, [props.value]);
 
     const handleChange = (value: string): void => {
-        if (!props.value) {
-            setValue(value);
-        }
+        setValue(value);
         props.onChange && props.onChange(value);
     };
 
