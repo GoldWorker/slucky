@@ -19,6 +19,13 @@ interface Progress {
     width: string,
     content: JSX.Element
 }
+interface ProgressCircleProps {
+    percent: number,
+    radius: string,
+    isPie: boolean,
+    content: JSX.Element,
+    status: string
+}
 
 export default function Progress(props: Progress): JSX.Element {
     return (
@@ -29,14 +36,6 @@ export default function Progress(props: Progress): JSX.Element {
             }
         </div>
     );
-}
-
-interface ProgressCircleProps {
-    percent: number,
-    radius: string,
-    isPie: boolean,
-    content: JSX.Element,
-    status: string
 }
 
 export function ProgressCircle(props: ProgressCircleProps): JSX.Element {

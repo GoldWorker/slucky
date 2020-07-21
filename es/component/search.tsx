@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect, useRef, createRef } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 
 interface SearchProps {
     labelName: string,

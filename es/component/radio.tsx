@@ -9,6 +9,18 @@ interface RadioProps {
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
+interface GroupProps {
+    defaultValue: string | number,
+    value: string | number,
+    className: string,
+    children: JSX.Element,
+    option: Array<{
+        label: string,
+        value: string | number
+    }>,
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
 export default function Radio(props: RadioProps): JSX.Element {
     const id = Math.random().toString(36).substring(2);
 
@@ -82,18 +94,6 @@ export function RadioBorder(props: RadioProps): JSX.Element {
             </label>
         </div>
     );
-}
-
-interface GroupProps {
-    defaultValue: string | number,
-    value: string | number,
-    className: string,
-    children: JSX.Element,
-    option: Array<{
-        label: string,
-        value: string | number
-    }>,
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const GroupContainer = (Component: any) => function Group(props: GroupProps): JSX.Element {

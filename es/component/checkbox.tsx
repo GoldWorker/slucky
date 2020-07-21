@@ -18,6 +18,21 @@ interface CheckboxProps {
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
+interface CheckboxGroupProps {
+    values: string[],
+    defaultValue: string[],
+    disabled: boolean,
+    option: Array<{
+        label: string,
+        value: string | number,
+        display: boolean,
+        disabled: boolean,
+    }>,
+    className: string,
+    children: JSX.Element,
+    onChange: (values: Array<string | number>) => void
+}
+
 export default function Checkbox(props: CheckboxProps): JSX.Element {
     const id = Math.random().toString(36).substring(2);
 
@@ -139,22 +154,7 @@ export function CheckboxBorder(props: CheckboxProps): JSX.Element {
     );
 }
 
-interface GroupProps {
-    values: string[],
-    defaultValue: string[],
-    disabled: boolean,
-    option: Array<{
-        label: string,
-        value: string | number,
-        display: boolean,
-        disabled: boolean,
-    }>,
-    className: string,
-    children: JSX.Element,
-    onChange: (values: Array<string | number>) => void
-}
-
-const GroupContainer = (Component: any) => function Group(props: GroupProps): JSX.Element {
+const GroupContainer = (Component: any) => function Group(props: CheckboxGroupProps): JSX.Element {
     const name = Math.random().toString(36).substring(2);
 
     const isInArray = (arr: string[], value: string | number): boolean | undefined => {

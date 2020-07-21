@@ -1,6 +1,6 @@
 {
     "name": "slucky",
-    "version": "0.4.3",
+    "version": "0.4.6",
     "description": "SluckyUI component base on react,but style you can use on other platform (Vue/Angular/...).",
     "main": "lib/index.js",
     "homepage": "http://www.brandf.cn",
@@ -13,7 +13,7 @@
         "test:dev": "jest --watch",
         "build": "webpack --mode production --env pro",
         "dev": "webpack --mode production --env dev",
-        "publish": "webpack --mode production && npm publish"
+        "buildAndPublish": "webpack --mode production --env pro && npm publish"
     },
     "keywords": [
         "react",

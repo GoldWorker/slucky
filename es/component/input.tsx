@@ -27,6 +27,13 @@ interface InputProps {
     onChange?: (value: string) => void
 }
 
+interface InputNumberProps extends InputProps {
+    value?: number,
+    max?: number,
+    min?: number,
+    step?: number,
+}
+
 export default function Input(props: InputProps): JSX.Element {
     const id = Math.random().toString(36).substring(2);
 
@@ -113,13 +120,6 @@ export function InputMoney(props: InputProps): JSX.Element {
         value: value,
         onChange: onChange
     }} />;
-}
-
-interface InputNumberProps extends InputProps {
-    value?: number,
-    max?: number,
-    min?: number,
-    step?: number,
 }
 
 export function InputNumber(props: InputNumberProps): JSX.Element {

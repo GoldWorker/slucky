@@ -13,3 +13,16 @@ npm-debug.log
 ./__mocks__
 ./test
 ./coverage
+.babelrc
+.browserslistrc
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierrc.js
+jest.config.js
+postcss.config.js
+tsconfig.json
+webpack.common.js
+webpack.config.js
+webpack.dev.js
